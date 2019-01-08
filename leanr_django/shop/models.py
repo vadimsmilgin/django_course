@@ -1,12 +1,11 @@
 from django.db import models
-from django.db import models
 from django.urls import reverse
 
 # Create your models here.
 
 
 class Category(models.Model):
-    name = models.CharField(max_length=200, db_index=True, verbose_name="Назвение")
+    name = models.CharField(max_length=200, db_index=True, verbose_name="Название")
     slug = models.SlugField(max_length=200, db_index=True, blank=True)
 
     class Meta:
@@ -23,7 +22,7 @@ class Category(models.Model):
 
 
 class Item(models.Model):
-    category = models.ForeignKey(Category, related_name='products', on_delete=models.CASCADE,)
+    category = models.ForeignKey(Category, related_name='products', on_delete=models.CASCADE)
     name = models.CharField(max_length=200, db_index=True, verbose_name="Назвение")
     slug = models.SlugField(max_length=200, db_index=True)
     price = models.FloatField(db_index=True, blank=True, verbose_name="Цена")

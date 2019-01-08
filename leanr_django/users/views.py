@@ -16,8 +16,8 @@ class Main(TemplateView):
 
 
 class LoginFormView(FormView):
-    form_login = AuthenticationForm
-    template_name = "login.html"
+    form_class = AuthenticationForm
+    template_name = "acc/login.html"
     success_url = "/"
 
     def form_valid(self, form):
@@ -28,9 +28,9 @@ class LoginFormView(FormView):
 
 
 class RegistrationFormView(FormView):
-    form_reg = UserCreationForm
-    template_name = "reg.html"
-    success_url = "/"
+    form_class = UserCreationForm
+    template_name = "acc/reg.html"
+    success_url = "login.html"
 
     def form_valid(self, form):
         form.save()

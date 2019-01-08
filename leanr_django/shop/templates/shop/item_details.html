@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title%}
+| {{item.name}}
+{% endblock %}
+{% block content%}
+
+<ul>
+    <li>{{item.name}}</li>
+    <li>{{item.price}}</li>
+    <li>{{item.description}}</li>
+</ul>
+
+{% endblock%}

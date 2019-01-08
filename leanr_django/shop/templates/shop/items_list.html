@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}
+| Товары
+{% endblock %}
+{% block content%}
+
+{% for item in items%}
+    <ul>
+        <li>
+            <a href="{{item.get_absolute_url}}">{{item.name}}</a>
+            {{item.price}}
+            {{item.category}}
+        </li>
+    </ul>
+{%endfor%}
+{% endblock %}

@@ -1,10 +1,28 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+    <meta content="text/html; UTF-8" http-equiv="Content-Type"/>
+    <title>Картограф|{% block title %}{% endblock %}</title>
 </head>
 <body>
-
+    <header>
+        <nav>
+            <ul>
+                <li><a href="/">Главная</a></li>
+                <li><a href="/users/reg">Регистрация</a></li>
+                <li>
+                    {% if user.is_authenticated %}
+                        <a href="/users/{{user.id}}">Мой кабинет</a>
+                        <a href="/users/logout">Выход</a>
+                    {% else %}
+                        <a href="/users/login">Войти</a>
+                    {% endif %}
+                </li>
+            </ul>
+        </nav>
+    </header>
+    {% block content %}{% endblock %}
 </body>
 </html>
