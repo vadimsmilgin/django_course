@@ -3,15 +3,33 @@
 {% block title %}
 | Товары
 {% endblock %}
-{% block content%}
 
-{% for item in items%}
-    <ul>
-        <li>
-            <a href="{{item.get_absolute_url}}">{{item.name}}</a>
-            {{item.price}}
-            {{item.category}}
-        </li>
-    </ul>
-{%endfor%}
+{% block content%}
+<div class="row">
+    <div class="col-sm-2">
+        {% for cat in categories%}
+            <ul>
+                <li>
+                    <a href="{{cat.get_absolute_url}}">{{cat.name}}</a>
+                </li>
+            </ul>
+        {%endfor%}
+    </div>
+
+    <div class="col-sm-8">
+        {% for item in items%}
+             <div class="card mb-3">
+            {% if not item.icon.url %}
+                  <img src="..." class="card-img-top" alt="...">
+            {% else %}
+                  <img src="{{item.icon.url}}" class="card-img-top" alt="{{item.name}}">
+            {% endif %}
+                <div class="card-body">
+                    <a href="{{item.get_absolute_url}}">{{item.name}}</a>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+</div>
 {% endblock %}
+

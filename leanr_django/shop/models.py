@@ -16,13 +16,17 @@ class Category(models.Model):
         verbose_name = 'Категория'
         verbose_name_plural = 'Категории'
 
-    def __srt__(self):
-        return str(self.name)
+    def __str__(self):
+        return self.name
         pass
+
+    def get_absolute_url(self):
+        return reverse('shop_category', kwargs={'slug': self.slug})
 
 
 class Item(models.Model):
     category = models.ForeignKey(Category, related_name='products', on_delete=models.CASCADE)
+    icon = models.ImageField(upload_to='shop/product_icons/', blank=True, verbose_name="")
     name = models.CharField(max_length=200, db_index=True, verbose_name="Назвение")
     slug = models.SlugField(max_length=200, db_index=True)
     price = models.FloatField(db_index=True, blank=True, verbose_name="Цена")
@@ -36,9 +40,10 @@ class Item(models.Model):
         verbose_name = 'Товар'
         verbose_name_plural = 'Товары'
 
-    def __srt__(self):
-        return str(self.name)
+    def __str__(self):
+        return self.name
         pass
 
     def get_absolute_url(self):
-        return reverse('detail', kwargs={'slug': self.slug})
+        return reverse('detail', kwargs = {'slug': self.slug})
+        pass

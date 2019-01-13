@@ -51,6 +51,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
+# центральный упл
 ROOT_URLCONF = 'leanr_django.urls'
 
 TEMPLATES = [
@@ -123,4 +124,19 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.1/howto/static-files/
 
+
+# куда ложить файлы медия (пользовательские эл-ты)
+MEDIA_ROOT = os.path.join(BASE_DIR, 'static/media')
+MEDIA_URL = '/media/'
+
+# свои данные (css, js & exc.)
+STATIC_ROOT = os.path.join(BASE_DIR, 'static/static')
 STATIC_URL = '/static/'
+
+# в переменной указаны места, где храниться вся наша статика, для того чтобы он собрал ее в одно место из этих мест
+STATICFILES_DIRS = (
+    os.path.join(BASE_DIR, "static"),
+)
+
+# Session ID
+CART_SESSION_ID = 'cart'
