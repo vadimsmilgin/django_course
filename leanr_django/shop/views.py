@@ -1,6 +1,8 @@
 from django.shortcuts import get_object_or_404
 from django.views.generic import DetailView, ListView
 from shop.models import *
+from cart.forms import CartAddProductForm
+from django.shortcuts import render, redirect
 # Create your views here.
 
 
@@ -19,9 +21,15 @@ class ProductList(ListView):
 
 
 class SingleProduct(DetailView):
-    model = Item
+#    model = Item
     template_name = "shop/item_details.html"
-    context_object_name = 'item'
+#    context_object_name = 'item'
+    cart_product_form = CartAddProductForm()
+
+    def get(self, request, slug):
+        product = get_object_or_404(Item, slug=slug)
+        return render(request, self.template_name, {'item': product, 'cart_product_form': self.cart_product_form})
+
 
 
 class SingleCategory(ListView):
