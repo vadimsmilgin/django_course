@@ -23,7 +23,7 @@
           <tr>
             <td class="cart-img">
               <a href="{{ product.get_absolute_url }}">
-                <img src="{% static product.icon.url %}" />
+                <img src="{% static product.icon.url %}" width="300" height="200"/>
               </a>
             </td>
             <td>{{ product.name }}</td>
@@ -39,8 +39,19 @@
             <td class="num">{{ item.price }} руб.</td>
             <td class="num">{{ item.total_price }} руб.</td>
           </tr>
+
         {% endwith %}
       {% endfor %}
+        <tr>
+            <td>Total</td>
+            <td colspan="4"></td>
+            <td class="num">{{cart.get_total_price}}</td>
+        </tr>
     </tbody>
   </table>
+    {% if cart|length %}
+        <a href="{% url "orders:OrderCreate" %}" class="btn btn-primary">Оформить заказ</a>
+    {% else %}
+        <a href="{% url "orders:OrderCreate" %}" class="btn btn-primary">Оформить заказ111</a>
+    {% endif %}
 {% endblock %}

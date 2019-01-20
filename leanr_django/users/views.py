@@ -30,7 +30,7 @@ class LoginFormView(FormView):
 class RegistrationFormView(FormView):
     form_class = UserCreationForm
     template_name = "acc/reg.html"
-    success_url = "login.html"
+    success_url = "login"
 
     def form_valid(self, form):
         form.save()

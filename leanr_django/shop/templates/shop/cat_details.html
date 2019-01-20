@@ -21,7 +21,7 @@
         {% if not item.icon.url %}
               <img src="..." class="card-img-top" alt="...">
         {% else %}
-              <img src="{{item.icon.url}}" class="card-img-top" alt="{{item.name}}">
+              <img src="{% static item.icon.url %}" class="card-img-top" alt="{{item.name}}">
         {% endif %}
             <div class="card-body">
                 <a href="{{item.get_absolute_url}}">{{item.name}}</a>
