@@ -49,9 +49,9 @@
         </tr>
     </tbody>
   </table>
-    {% if cart|length %}
-        <a href="{% url "orders:OrderCreate" %}" class="btn btn-primary">Оформить заказ</a>
+    {% if cart|length > 0 %}
+        <a class="btn btn-primary" href="{% url "orders:OrderCreate" %}" role="button">Оформить заказ</a>
     {% else %}
-        <a href="{% url "orders:OrderCreate" %}" class="btn btn-primary">Оформить заказ111</a>
+        <a class="btn btn-primary btn-lg disabled" href="{% url "orders:OrderCreate" %}" role="button">Оформить заказ</a>
     {% endif %}
 {% endblock %}

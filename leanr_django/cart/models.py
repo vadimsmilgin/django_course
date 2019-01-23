@@ -59,3 +59,6 @@ class Cart:
         del self.session[settings.CART_SESSION_ID]
         self.session.modified = True
         pass
+
+    def __len__(self):
+        return sum(item['quantity'] for item in self.cart.values())
